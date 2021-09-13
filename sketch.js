@@ -1,88 +1,110 @@
-let tree
+let song;
 function setup() {
-  createCanvas(800, 500);
-  background(0, 0, 200);
-  tree = new Tree(300,299,50,100)
-}
-
-var x = 175
-function draw() {
-  //background(220, 0, 200);
-  
-  
-  fill(0,0,0)
-  
-  rect(x, 280, 25, 80, 100, 100);
-  fill(100,0,0)
-  rect(170, 350, 10, 50,5);
-  fill(100,0,0)
-  rect(195, 350, 10, 50,5);
-  
-  fill(100,0,0)
-  rect(155, 310, 20, 10,5);
-  
-  fill(100,0,0)
-  rect(200, 310, 20, 10,5);
-  
-  fill(0,0,0)
-  circle(189,275,45)
-  //sun 
-  fill(225,200,0)
-  circle(751,85,80)
-  
-   
-  //house
-  fill(180,225,150)
-  rect(500,220,200,200)
-   fill(0,225,150)
-  rect(520,280,50,50)
-  tree.make()
-   fill(20,225,150)
-  rect(610,295,50,110)
-  
-  fill(100,1,250)
-  triangle(500,220,700,220,600,90)
-  
-  fill(225,225,0)
-  circle(620,350,10)
-  strokeWeight(5)
-  line(545,280,545,330)
-  line(520,305,570,305)
-  line(565,220,600,90)
-  line(640,220,600,90)
-  line(600,220,600,90)
-  line(555,150,645,150)
-  line(530,180,667,180)
-  line(515,200,680,200)
-  fill(0,150,150);
-  //ground
-  rect(0,400,800,100);
-  tree.make()
-  
-}
-class Tree
-  {
-    constructor(x,y,width,height)
-    {
-      this.x =x;
-      this.y = y;
-      this.width= width;
-      this.height= height 
-    }
-  
-    make()
-    {
-      fill(225,220,225)
-      rect(this.x,this.y,this.width,this.height)
-      this.leaves()
-     console.log('this is being called')
-      
-     
-    }
-
-    leaves()
-    {
-      fill(0,225,225)
-      circle(this.x+25,this.y,100)
-    }
+  createCanvas(400, 400);
+  song = loadSound("music.mp3")
+  Plain = new plane(0,10)
+  Clouds = []
+  for(let i = 0; i < 10; i++){
+  Cloud = new cloud()
+  Clouds.push(Cloud)
   }
+}
+
+function draw() {
+  background(0,220,220);
+  Plain.update();
+  Plain.show();
+   for(let i = 0; i < 2; i++){
+  Clouds[i].update()
+  Clouds[i].show()
+   }
+}
+function mousePressed() {
+  if (song.isPlaying()) {
+    // .isPlaying() returns a boolean
+    song.stop();
+  } else {
+    song.play();
+  }
+}
+
+class cloud
+  {
+    constructor()
+    {
+      this.x = width
+      this.y  = random(height)
+      this.size1 = random(15,70)
+      this.size2 = random(15,70)
+    }
+    
+     update()
+      {
+        this.x = this.x-1
+        if(this.x == 0){
+          this.x = width
+          this.y = random(height)
+        }
+      }
+    
+      show()
+    {
+      
+      
+      fill(250,250,250);
+      noStroke() 
+      ellipse(this.x, this.y, this.size1, this.size2);
+      ellipse(this.x+1, this.y+1, this.size1, this.size2);
+      ellipse(this.x+4, this.y+4, this.size1, this.size2);
+      ellipse(this.x-10, this.y-10, this.size1, this.size2);
+      ellipse(this.x+10, this.y+10, this.size1, this.size2);
+      
+      
+        
+    }
+    
+  }
+
+class plane
+  {
+      constructor(x,y)
+      {
+        this.x = 50
+        this.y = y
+      }
+    
+      update()
+      {
+        if(keyCode ==DOWN_ARROW )
+          {
+            this.y += 1
+          }
+        else if (keyCode == UP_ARROW)
+          {
+            this.y -= 1
+          }
+       if(this.y == 0){
+         this.y = width
+          }
+        else if(this.y == width)
+          {
+            this.y = 0
+          }
+      }
+    
+      show()
+    {
+      
+      fill(0,200,100);
+      stroke (0)
+      rect(this.x, this.y, 60, 20)
+      triangle(this.x+20, this.y, this.x-10, this.y ,this.x , this.y+10)
+      triangle(this.x+50, this.y+10, this.x+20, this.y+10 ,this.x , this.y+30)
+       
+        
+    }
+    
+    
+    
+  }
+  
