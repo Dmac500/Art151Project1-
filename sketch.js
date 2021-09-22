@@ -110,7 +110,9 @@
 function setup() {
   createCanvas(1050, 750);
    Grid = new grid(50,50)
-   arry = Grid.build()
+   arry = Grid.build() 
+   alert("Just click the screen and let the party begin");
+
    
   }
  function draw(){
@@ -154,7 +156,7 @@ function setup() {
        fill(random(0,225),random(0,225),random(0,255))
        stroke(0)
        //rect(j,i,this.x,this.y)
-       this.arr.push(rect(j,i,this.x,this.y))
+       this.arr.push(rect(j + random(100),i,this.x,this.y))
       }
      }
      return this.arr
@@ -162,13 +164,27 @@ function setup() {
 
   update2()
    {
-        
-       fill(0,0,0)
-       stroke(0)
-       rect(random(0,width),random(0,height),this.x,this.y)
+        this.update()
+       fill(random(0,180),random(0,180),random(0,180))
+        noStroke(); 
+       let a = 0.0;
+let inc = TWO_PI / 25.0;
+for (let i = 0; i < width /4; i++) {
+  //line(i * 8, height /2, i * 8, (height/2) + sin(a) * 80.0);
+   fill(random(0,225),random(0,250),random(0,250))
+        stroke(10); 
+        circle(i * 10,(height/2) + sin(a) * 200, 200)
+  //circle(i * 8,(height/4) + sin(a) * 80.0, 50)
+ // circle(i * 8,(height/1.5) + sin(a) * 80.0, 50)
+  //circle((width/2) + sin(a) * 100,i*8, 50)
+ // rect(i * 8,(height/2) + sin(a) * 80.0,this.x,this.y)
+  a = a + inc;
+}
+
+      // rect(random(0,width),random(0,height),this.x,this.y)
      //this.arr[random(0,arr.length)] = rect(0,0,this.x,this.y) ;
      
-     return this.arr
+    // return this.arr
    }
 
 
