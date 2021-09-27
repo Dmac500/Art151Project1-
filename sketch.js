@@ -109,17 +109,25 @@
     
 function setup() {
   createCanvas(1050, 750);
-   Grid = new grid(50,50)
+   Grid = new grid(30,30)
    arry = Grid.build() 
-   alert("Just click the screen and let the party begin");
-
+   alert("Just click the screen and draw. up key is to clear your image and anyother key will let you draw again");
+  
    
   }
  function draw(){
   
   if (mouseIsPressed)
   {
-   arry = Grid.update2()
+   arry = Grid.update()
+
+   //rect(mouseX,mouseY,this.x,this.y)
+  }
+
+  if(keyCode === UP_ARROW )
+  {
+     arry = Grid.build2() 
+    
   }
  }
 
@@ -138,7 +146,24 @@ function setup() {
      { 
        for(let j = 0; j < width; j += this.x)
       {
-       fill(random(0,225),random(100,225),random(180,255))
+       fill(0,0,0) // black 
+      // fill("white") //white
+       stroke(0)
+       //rect(j,i,this.x,this.y)
+       this.arr.push(rect(j,i,this.x,this.y))
+      }
+     }
+     return this.arr
+   }
+   build2() {
+     
+     for(let i = 0; i < height; i += this.y)
+     { 
+        fill(random(225),random(225),random(225)) 
+       for(let j = 0; j < width; j += this.x)
+      {
+      // black 
+      // fill("white") //white
        stroke(0)
        //rect(j,i,this.x,this.y)
        this.arr.push(rect(j,i,this.x,this.y))
@@ -149,14 +174,25 @@ function setup() {
    
    update()
    {
+    let a = 0.0;
+    let inc = TWO_PI / 100.0;
       for(let i = 0; i < height; i += this.y)
      { 
+       fill(random(0,225),random(0,225),random(0,255))
        for(let j = 0; j < width; j += this.x)
       {
-       fill(random(0,225),random(0,225),random(0,255))
-       stroke(0)
+       //fill(random(0,225),random(0,225),random(0,255))
+       stroke(30)
        //rect(j,i,this.x,this.y)
-       this.arr.push(rect(j + random(100),i,this.x,this.y))
+       //this.arr.push(rect((width) + sin(a) * 80.0 + random(0,200) , i ,this.x,this.y))
+       this.arr.push(rect((width/2.3) + sin(a) * (mouseX /3) + random(0,50) , (mouseY),this.x ,this.y))
+      // this.arr.push(rect((width/2.5) + sin(a) * mouseX + random(0,200) , i + random(0,25) ,this.x ,this.y))// sin fun
+      // this.arr.push(rect((width/2) + sin(a) * 100.0 + random(0,200) , i + random(0,5) ,mouseX /random(1,25) ,mouseY/random(1,25) ))//wild 
+       //this.arr.push(rect((width/1.5) + sin(a) * 100.0 + random(0,200) , i + random(0,5) ,this.x ,this.y ))// ask
+       //this.arr.push(rect((width/8) + sin(a) * 80.0 + random(0,200) , i + random(0,25) ,this.x,this.y))//ask
+       //this.arr.push(rect((width/1.5) + sin(a) * 120,i,this.x,this.y))
+       //this.arr.push(rect((width/2) + sin(a) * 120,i,this.x,this.y))
+        a = a + inc;
       }
      }
      return this.arr
