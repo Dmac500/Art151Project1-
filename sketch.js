@@ -108,10 +108,10 @@
     
     
 function setup() {
-  createCanvas(1050, 750);
+  createCanvas(windowWidth, windowHeight);
    Grid = new grid(30,30)
    arry = Grid.build() 
-   alert("Just click the screen and draw. up key is to clear your image and anyother key will let you draw again");
+   alert("Just click the screen and draw. up key is to clear your image , down to reset the background and anyother key will let you draw again!!! ");
   
    
   }
