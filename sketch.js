@@ -128,6 +128,11 @@ function setup() {
   {
      arry = Grid.build2() 
     
+  } 
+  if(keyCode === DOWN_ARROW )
+  {
+     arry = Grid.build() 
+    
   }
  }
 
@@ -144,7 +149,8 @@ function setup() {
      
      for(let i = 0; i < height; i += this.y)
      { 
-       for(let j = 0; j < width; j += this.x)
+       //fill(random(180,225),random(180,225),random(180,225))
+      for(let j = 0; j < width; j += this.x)
       {
        fill(0,0,0) // black 
       // fill("white") //white
