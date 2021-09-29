@@ -191,7 +191,7 @@ function setup() {
        stroke(30)
        //rect(j,i,this.x,this.y)
        //this.arr.push(rect((width) + sin(a) * 80.0 + random(0,200) , i ,this.x,this.y))
-       this.arr.push(rect((width/2.3) + sin(a) * (mouseX /3) + random(0,50) , (mouseY),this.x ,this.y))
+       this.arr.push(rect((width/2.0) + sin(a) * (mouseX /2) + random(0,50) , (mouseY),this.x ,this.y))
       // this.arr.push(rect((width/2.5) + sin(a) * mouseX + random(0,200) , i + random(0,25) ,this.x ,this.y))// sin fun
       // this.arr.push(rect((width/2) + sin(a) * 100.0 + random(0,200) , i + random(0,5) ,mouseX /random(1,25) ,mouseY/random(1,25) ))//wild 
        //this.arr.push(rect((width/1.5) + sin(a) * 100.0 + random(0,200) , i + random(0,5) ,this.x ,this.y ))// ask
